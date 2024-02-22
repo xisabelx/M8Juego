@@ -1,6 +1,7 @@
 package com.example.m8juego
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -37,6 +38,8 @@ class Registro : AppCompatActivity() {
         nombre = findViewById<EditText>(R.id.nombre)
         fecha = findViewById<TextView>(R.id.fecha)
         Registrar = findViewById<Button>(R.id.Registrar)
+        
+
 
         val date = Calendar.getInstance().time
         val formatter = SimpleDateFormat.getDateInstance() //or use
@@ -44,6 +47,12 @@ class Registro : AppCompatActivity() {
         val formatedDate = formatter.format(date)
         //ara la mostrem al TextView
         fecha.text = formatedDate
+        val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
+        correo.setTypeface(tf)
+        pass.setTypeface(tf)
+        nombre.setTypeface(tf)
+        fecha.setTypeface(tf)
+        Registrar.setTypeface(tf)
 
         //Instanciem el firebaseAuth
         auth = FirebaseAuth.getInstance()

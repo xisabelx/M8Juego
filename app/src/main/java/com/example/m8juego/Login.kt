@@ -1,6 +1,7 @@
 package com.example.m8juego
 
 import android.content.Intent
+import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Patterns
@@ -26,6 +27,10 @@ class Login : AppCompatActivity() {
         correoLogin = findViewById<EditText>(R.id.correoLogin)
         passLogin = findViewById<EditText>(R.id.passLogin)
         BtnLogin = findViewById<Button>(R.id.BtnLogin)
+        val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
+        correoLogin.setTypeface(tf)
+        passLogin.setTypeface(tf)
+        BtnLogin.setTypeface(tf)
         auth = FirebaseAuth.getInstance()
         BtnLogin.setOnClickListener(){
             //Abans de fer el registre validem les dades

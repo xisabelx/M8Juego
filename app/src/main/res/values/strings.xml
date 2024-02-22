@@ -1,3 +1,14 @@
 <resources>
-    <string name="app_name">M8Juego</string>
+    <string name="app_name">7diff</string>
+    <string name="login">Login</string>
+    <string name="registro">Registro</string>
+    <string name="correo">E-mail</string>
+    <string name="nombre">Nombre</string>
+    <string name="pass">Password</string>
+    <string name="fecha">Fecha</string>
+    <string name="Registrar">REGISTRAR</string>
+    <string name="correoLogin">E-mail</string>
+    <string name="passLogin">Password</string>
+    <string name="BtnLogin">ENTRAR</string>
+    <string name="tancarSessio">Tancar Sessió</string>
 </resources>

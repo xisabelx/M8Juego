@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "804326299138",
+    "project_id": "m8juego-e9538",
+    "storage_bucket": "m8juego-e9538.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:804326299138:android:a44a887a95232aefb6b91b",
+        "android_client_info": {
+          "package_name": "com.example.m8juego"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLndqti6F880I4_hzGLxXw3lX1bE9h1Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

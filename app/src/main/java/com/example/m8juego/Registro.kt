@@ -100,6 +100,7 @@ class Registro : AppCompatActivity() {
             var passString: String = pass.getText().toString()
             var nombreString: String = nombre.getText().toString()
             var fechaString: String= fecha.getText().toString()
+            var nivell: String = "1"
             var dadesJugador : HashMap<String,String> = HashMap<String, String>()
             dadesJugador.put ("Uid",uidString)
             dadesJugador.put ("Email",correoString)
@@ -107,6 +108,7 @@ class Registro : AppCompatActivity() {
             dadesJugador.put ("Nom",nombreString)
             dadesJugador.put ("Data",fechaString)
             dadesJugador.put ("Puntuacio", puntuacio.toString())
+            dadesJugador.put ("Nivell", nivell)
             // Creem un punter a la base de dades i li donem un nom
             var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://m8juego-e9538-default-rtdb.europe-west1.firebasedatabase.app/")
             var reference: DatabaseReference = database.getReference("DATA BASE JUGADORS")

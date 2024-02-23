@@ -29,6 +29,8 @@ class Menu : AppCompatActivity() {
     lateinit var uid: TextView
     lateinit var correo: TextView
     lateinit var nom: TextView
+    private var nivell ="1"
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,7 +72,17 @@ class Menu : AppCompatActivity() {
             Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show()
         }
         jugarBtn.setOnClickListener(){
-            Toast.makeText(this,"JUGAR", Toast.LENGTH_SHORT).show()
+            var Uids : String = uid.getText().toString()
+            var noms : String = nom.getText().toString()
+            var puntuacios : String = puntuacio.getText().toString()
+            var nivells : String =nivell
+            val intent= Intent(this, SeleccionNivel::class.java)
+            intent.putExtra("UID",Uids)
+            intent.putExtra("NOM",noms)
+            intent.putExtra("PUNTUACIO",puntuacios)
+            intent.putExtra("NIVELL",nivells)
+            startActivity(intent)
+            finish()
         }
 
 
@@ -129,6 +141,8 @@ class Menu : AppCompatActivity() {
                                 ds.child("Email").getValue().toString())
                             nom.setText(
                                 ds.child("Nom").getValue().toString())
+                            nivell = ds.child("Nivell").getValue().toString()
+
                         }
                         if (!trobat)
                         {

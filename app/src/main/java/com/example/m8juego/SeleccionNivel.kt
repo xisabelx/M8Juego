@@ -1,11 +1,13 @@
 package com.example.m8juego
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
+import com.example.m8juego.Nivel1 as Nivel1
 
 private var NOM: String =""
 private var PUNTUACIO: String=""
@@ -54,6 +56,11 @@ class SeleccionNivel : AppCompatActivity() {
             Toast.makeText(this,"NIVELL 3",Toast.LENGTH_LONG).show()
             imageButton3.isEnabled=true
             imageButton3.visibility =View.VISIBLE
+        }
+        imageButton1.setOnClickListener(){
+            val intent = Intent(this, Nivel1::class.java)
+            startActivity(intent)
+            finish()
         }
 
 

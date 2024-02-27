@@ -17,7 +17,7 @@ class Splash : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-        mediaplayer = MediaPlayer.create(getBaseContext(), R.raw.wee);
+        mediaplayer = MediaPlayer.create(getBaseContext(), R.raw.audioinicio);
         mediaplayer.start();
         //amaguem la barra, pantalla a full
         supportActionBar?.hide()

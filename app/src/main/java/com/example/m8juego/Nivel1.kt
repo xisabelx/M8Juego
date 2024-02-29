@@ -17,6 +17,11 @@ import com.google.firebase.database.FirebaseDatabase
 import java.text.SimpleDateFormat
 import java.util.*
 
+private var NOM: String =""
+private var PUNTUACIO: String=""
+private var UID: String=""
+private var NIVELL: String=""
+
 class Nivel1 : AppCompatActivity() {
 
     private val COLUMNAS = 3
@@ -30,6 +35,11 @@ class Nivel1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nivel1)
+        var intent:Bundle? = intent.extras
+        UID = intent?.get("UID").toString()
+        NOM = intent?.get("NOM").toString()
+        PUNTUACIO = intent?.get("PUNTUACIO").toString()
+        NIVELL = intent?.get("NIVELL").toString()
         continuarBtn = findViewById(R.id.continuarBtn)
         continuarBtn.setTypeface(tf)
         continuarBtn.visibility = View.INVISIBLE

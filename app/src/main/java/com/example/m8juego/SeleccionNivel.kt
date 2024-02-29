@@ -59,6 +59,10 @@ class SeleccionNivel : AppCompatActivity() {
         }
         imageButton1.setOnClickListener(){
             val intent = Intent(this, Nivel1::class.java)
+            intent.putExtra("UID",UID)
+            intent.putExtra("NOM",NOM)
+            intent.putExtra("PUNTUACIO",PUNTUACIO)
+            intent.putExtra("NIVELL",NIVELL)
             startActivity(intent)
             finish()
         }

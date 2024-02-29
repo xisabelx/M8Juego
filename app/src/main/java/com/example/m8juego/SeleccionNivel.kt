@@ -11,7 +11,7 @@ import com.example.m8juego.Nivel1 as Nivel1
 
 private var NOM: String =""
 private var PUNTUACIO: String=""
-private var UID: String=""
+var UID: String=""
 private var NIVELL: String=""
 lateinit var imageButton1 :ImageButton
 lateinit var imageButton2 :ImageButton

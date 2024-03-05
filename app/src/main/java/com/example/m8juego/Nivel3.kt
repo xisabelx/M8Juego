@@ -25,9 +25,10 @@ private var UID: String=""
 private var NIVELL: String=""
 lateinit var tf: Typeface
 
-class Nivel1 : AppCompatActivity() {
+class Nivel3 : AppCompatActivity() {
 
-    private val COLUMNAS = 3
+    private val COLUMNAS = 4
+    private val FILAS = 4
     private var botonpulsado1 : Int=0;
     private var botonpulsado2 : Int=0;
     private var movimientos: Int=0;
@@ -66,7 +67,14 @@ class Nivel1 : AppCompatActivity() {
             findViewById<ImageButton>(R.id.button6),
             findViewById<ImageButton>(R.id.button7),
             findViewById<ImageButton>(R.id.button8),
-            findViewById<ImageButton>(R.id.button9)
+            findViewById<ImageButton>(R.id.button9),
+            findViewById<ImageButton>(R.id.button10),
+            findViewById<ImageButton>(R.id.button11),
+            findViewById<ImageButton>(R.id.button12),
+            findViewById<ImageButton>(R.id.button13),
+            findViewById<ImageButton>(R.id.button14),
+            findViewById<ImageButton>(R.id.button15),
+            findViewById<ImageButton>(R.id.button16)
         )
 
         for (i in graella.indices) {
@@ -74,15 +82,22 @@ class Nivel1 : AppCompatActivity() {
 
             // Configuración del fondo del botón según el valor en graella[i]
             when (graella[i]) {
-                "0" -> button.setBackgroundResource(R.drawable.gatouno)
-                "1" -> button.setBackgroundResource(R.drawable.gatodos)
-                "2" -> button.setBackgroundResource(R.drawable.gatotres)
-                "3" -> button.setBackgroundResource(R.drawable.gatocuatro)
-                "4" -> button.setBackgroundResource(R.drawable.gatocinco)
-                "5" -> button.setBackgroundResource(R.drawable.gatoseis)
-                "6" -> button.setBackgroundResource(R.drawable.gatosiete)
-                "7" -> button.setBackgroundResource(R.drawable.gatoocho)
-                "8" -> button.setBackgroundResource(R.drawable.gatonueve)
+                "0" -> button.setBackgroundResource(R.drawable.gatoenricuno)
+                "1" -> button.setBackgroundResource(R.drawable.gatoenricdos)
+                "2" -> button.setBackgroundResource(R.drawable.gatoenrictres)
+                "3" -> button.setBackgroundResource(R.drawable.gatoenriccuatro)
+                "4" -> button.setBackgroundResource(R.drawable.gatoenriccinco)
+                "5" -> button.setBackgroundResource(R.drawable.gatoenricseis)
+                "6" -> button.setBackgroundResource(R.drawable.gatoenricsiete)
+                "7" -> button.setBackgroundResource(R.drawable.gatoenricocho)
+                "8" -> button.setBackgroundResource(R.drawable.gatoenricnueve)
+                "9" -> button.setBackgroundResource(R.drawable.gatoenricdiez)
+                "10" -> button.setBackgroundResource(R.drawable.gatoenriconce)
+                "11" -> button.setBackgroundResource(R.drawable.gatoenricdoce)
+                "12" -> button.setBackgroundResource(R.drawable.gatoenrictrece)
+                "13" -> button.setBackgroundResource(R.drawable.gatoenriccatorce)
+                "14" -> button.setBackgroundResource(R.drawable.gatoenricquince)
+                "15" -> button.setBackgroundResource(R.drawable.gatoenricdieziseis)
             }
             button.tag = i
             button.setOnClickListener {
@@ -162,7 +177,7 @@ class Nivel1 : AppCompatActivity() {
 
     private fun inicializar() {
         //inicializamos la graella con numeros del 1 al 8 en este caso, en String
-        graella = Array(COLUMNAS*COLUMNAS) { i -> i.toString() }
+        graella = Array(COLUMNAS*FILAS) { i -> i.toString() }
     }
 
     private fun estaResuelto(): Boolean {
@@ -186,11 +201,11 @@ class Nivel1 : AppCompatActivity() {
     private fun finalNivell(){
         var database: FirebaseDatabase = FirebaseDatabase.getInstance("https://m8juego-e9538-default-rtdb.europe-west1.firebasedatabase.app/")
         var reference: DatabaseReference = database.getReference("DATA BASE JUGADORS")
-            //captura la data
+        //captura la data
         val date = Calendar.getInstance().time
         val formatter = SimpleDateFormat.getDateInstance()
         val formatedDate = formatter.format(date)
-        var nivell : String ="2"
+        var nivell : String ="4"
         ocultarbotones()
         var fondo:ImageView = findViewById(R.id.fondoniveles)
         fondo.setImageResource(R.drawable.win)
@@ -198,7 +213,7 @@ class Nivel1 : AppCompatActivity() {
         //accedint directament al punt del arbre de dades que volem anar, podem modificar
         //només una de les dades sense que calgui canviar tots els camps: nom, email...
 
-        reference.child(UID).child("Puntuacio").setValue(movimientos.toString())
+        reference.child(UID).child("Puntuacio").setValue((PUNTUACIO.toInt()+movimientos).toString())
         reference.child(UID).child("Nivell").setValue(nivell)
         reference.child(UID).child("Data").setValue(formatedDate)
 
@@ -215,7 +230,15 @@ class Nivel1 : AppCompatActivity() {
             findViewById<ImageButton>(R.id.button6),
             findViewById<ImageButton>(R.id.button7),
             findViewById<ImageButton>(R.id.button8),
-            findViewById<ImageButton>(R.id.button9)
+            findViewById<ImageButton>(R.id.button9),
+            findViewById<ImageButton>(R.id.button10),
+            findViewById<ImageButton>(R.id.button11),
+            findViewById<ImageButton>(R.id.button12),
+            findViewById<ImageButton>(R.id.button13),
+            findViewById<ImageButton>(R.id.button14),
+            findViewById<ImageButton>(R.id.button15),
+            findViewById<ImageButton>(R.id.button16)
+
         )
         for (button in buttons){
             button.visibility=View.INVISIBLE

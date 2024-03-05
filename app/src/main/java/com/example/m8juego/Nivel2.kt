@@ -37,7 +37,7 @@ class Nivel2 : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nivel1)
+        setContentView(R.layout.activity_nivel2)
         var intent:Bundle? = intent.extras
         UID = intent?.get("UID").toString()
         NOM = intent?.get("NOM").toString()
@@ -59,23 +59,18 @@ class Nivel2 : AppCompatActivity() {
     }
     private fun mostrar() {
         val buttons = listOf(
-            findViewById<ImageButton>(R.id.button),
-            findViewById<ImageButton>(R.id.button2),
-            findViewById<ImageButton>(R.id.button3),
-            findViewById<ImageButton>(R.id.button4),
-            findViewById<ImageButton>(R.id.button5),
-            findViewById<ImageButton>(R.id.button6),
-            findViewById<ImageButton>(R.id.button7),
-            findViewById<ImageButton>(R.id.button8),
-            findViewById<ImageButton>(R.id.button9),
             findViewById<ImageButton>(R.id.button10),
             findViewById<ImageButton>(R.id.button11),
-            findViewById<ImageButton>(R.id.button12),
             findViewById<ImageButton>(R.id.button12),
             findViewById<ImageButton>(R.id.button13),
             findViewById<ImageButton>(R.id.button14),
             findViewById<ImageButton>(R.id.button15),
-            findViewById<ImageButton>(R.id.button16)
+            findViewById<ImageButton>(R.id.button16),
+            findViewById<ImageButton>(R.id.button17),
+            findViewById<ImageButton>(R.id.button18),
+            findViewById<ImageButton>(R.id.button19),
+            findViewById<ImageButton>(R.id.button20),
+            findViewById<ImageButton>(R.id.button21)
         )
 
         for (i in graella.indices) {
@@ -136,25 +131,31 @@ class Nivel2 : AppCompatActivity() {
         val imageButton1 = findViewById<ImageButton>(boton1)
         val imageButton2 = findViewById<ImageButton>(boton2)
         val movimientosText = findViewById<TextView>(R.id.puntos)
-        val posicion1=imageButton1.tag;
-        val posicion2=imageButton2.tag;
-        Log.i("MYTAG2", posicion1.toString())
-        Log.i("MYTAG2", posicion2.toString())
-        val backgroundBoton1 = imageButton1.background
-        val backgroundBoton2 = imageButton2.background
-        if ((boton2 == (boton1 + 1)) || (boton2 ==(boton1 - 1)) || (boton2 ==(boton1 - COLUMNAS)) || (boton2 ==(boton1 + COLUMNAS))){
+        val posicion1 = imageButton1.tag as Int
+        val posicion2 = imageButton2.tag as Int
+
+        val fila1 = posicion1 / COLUMNAS
+        val columna1 = posicion1 % COLUMNAS
+        val fila2 = posicion2 / COLUMNAS
+        val columna2 = posicion2 % COLUMNAS
+
+        if ((fila1 == fila2 && (columna1 - columna2 == 1 || columna2 - columna1 == 1)) ||
+            (columna1 == columna2 && (fila1 - fila2 == 1 || fila2 - fila1 == 1))
+        ) {
+            // Los botones son adyacentes, puedes intercambiar imágenes
+            val backgroundBoton1 = imageButton1.background
+            val backgroundBoton2 = imageButton2.background
             imageButton1.background = backgroundBoton2
             imageButton2.background = backgroundBoton1
-            val temp = graella[posicion1 as Int]
 
-            movimientos=movimientos+1
+            val temp = graella[posicion1]
+            graella[posicion1] = graella[posicion2]
+            graella[posicion2] = temp
+
+            movimientos++
             movimientosText.text = movimientos.toString()
 
-
-            graella[posicion1] = graella[posicion2 as Int]
-            graella[posicion2] = temp
             final()
-
         }
     }
 
@@ -219,18 +220,18 @@ class Nivel2 : AppCompatActivity() {
     }
     private fun ocultarbotones(){
         val buttons = listOf(
-            findViewById<ImageButton>(R.id.button),
-            findViewById<ImageButton>(R.id.button2),
-            findViewById<ImageButton>(R.id.button3),
-            findViewById<ImageButton>(R.id.button4),
-            findViewById<ImageButton>(R.id.button5),
-            findViewById<ImageButton>(R.id.button6),
-            findViewById<ImageButton>(R.id.button7),
-            findViewById<ImageButton>(R.id.button8),
-            findViewById<ImageButton>(R.id.button9),
             findViewById<ImageButton>(R.id.button10),
             findViewById<ImageButton>(R.id.button11),
-            findViewById<ImageButton>(R.id.button12)
+            findViewById<ImageButton>(R.id.button12),
+            findViewById<ImageButton>(R.id.button13),
+            findViewById<ImageButton>(R.id.button14),
+            findViewById<ImageButton>(R.id.button15),
+            findViewById<ImageButton>(R.id.button16),
+            findViewById<ImageButton>(R.id.button17),
+            findViewById<ImageButton>(R.id.button18),
+            findViewById<ImageButton>(R.id.button19),
+            findViewById<ImageButton>(R.id.button20),
+            findViewById<ImageButton>(R.id.button21)
         )
         for (button in buttons){
             button.visibility=View.INVISIBLE

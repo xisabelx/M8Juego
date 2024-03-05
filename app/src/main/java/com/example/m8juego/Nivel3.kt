@@ -23,7 +23,7 @@ private var NOM: String =""
 private var PUNTUACIO: String=""
 private var UID: String=""
 private var NIVELL: String=""
-lateinit var tf: Typeface
+//lateinit var tf: Typeface
 
 class Nivel3 : AppCompatActivity() {
 
@@ -35,16 +35,17 @@ class Nivel3 : AppCompatActivity() {
     lateinit var continuarBtn: Button
     private lateinit var graella: Array<String>
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_nivel1)
+        setContentView(R.layout.activity_nivel3)
         var intent:Bundle? = intent.extras
         UID = intent?.get("UID").toString()
         NOM = intent?.get("NOM").toString()
         PUNTUACIO = intent?.get("PUNTUACIO").toString()
         NIVELL = intent?.get("NIVELL").toString()
-        tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
         continuarBtn = findViewById(R.id.continuarBtn)
+        val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
         continuarBtn.setTypeface(tf)
         continuarBtn.visibility = View.INVISIBLE
         continuarBtn.setOnClickListener(){
@@ -139,25 +140,38 @@ class Nivel3 : AppCompatActivity() {
         val imageButton1 = findViewById<ImageButton>(boton1)
         val imageButton2 = findViewById<ImageButton>(boton2)
         val movimientosText = findViewById<TextView>(R.id.puntos)
-        val posicion1=imageButton1.tag;
-        val posicion2=imageButton2.tag;
-        Log.i("MYTAG2", posicion1.toString())
-        Log.i("MYTAG2", posicion2.toString())
-        val backgroundBoton1 = imageButton1.background
-        val backgroundBoton2 = imageButton2.background
-        if ((boton2 == (boton1 + 1)) || (boton2 ==(boton1 - 1)) || (boton2 ==(boton1 - COLUMNAS)) || (boton2 ==(boton1 + COLUMNAS))){
+        val posicion1 = imageButton1.tag as Int
+        val posicion2 = imageButton2.tag as Int
+
+        Log.i("POSICION1", posicion1.toString())
+        Log.i("POSICION1", posicion2.toString())
+
+        val fila1 = posicion1 / COLUMNAS
+        val columna1 = posicion1 % COLUMNAS
+        val fila2 = posicion2 / COLUMNAS
+        val columna2 = posicion2 % COLUMNAS
+        Log.i("FILAYCOLUMNA", fila1.toString())
+        Log.i("FILAYCOLUMNA", fila2.toString())
+        Log.i("FILAYCOLUMNA", columna1.toString())
+        Log.i("FILAYCOLUMNA", columna2.toString())
+
+        if ((fila1 == fila2 && (columna1 - columna2 == 1 || columna2 - columna1 == 1)) ||
+            (columna1 == columna2 && (fila1 - fila2 == 1 || fila2 - fila1 == 1))
+        ) {
+            // Los botones son adyacentes, puedes intercambiar imágenes
+            val backgroundBoton1 = imageButton1.background
+            val backgroundBoton2 = imageButton2.background
             imageButton1.background = backgroundBoton2
             imageButton2.background = backgroundBoton1
-            val temp = graella[posicion1 as Int]
 
-            movimientos=movimientos+1
+            val temp = graella[posicion1]
+            graella[posicion1] = graella[posicion2]
+            graella[posicion2] = temp
+
+            movimientos++
             movimientosText.text = movimientos.toString()
 
-
-            graella[posicion1] = graella[posicion2 as Int]
-            graella[posicion2] = temp
             final()
-
         }
     }
 

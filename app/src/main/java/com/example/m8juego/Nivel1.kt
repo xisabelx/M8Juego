@@ -38,7 +38,6 @@ class Nivel1 : AppCompatActivity() {
     private var movimientos: Int=0;
     lateinit var continuarBtn: Button
     private lateinit var graella: Array<String>
-    val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +47,7 @@ class Nivel1 : AppCompatActivity() {
         NOM = intent?.get("NOM").toString()
         PUNTUACIO = intent?.get("PUNTUACIO").toString()
         NIVELL = intent?.get("NIVELL").toString()
+        val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
         continuarBtn = findViewById(R.id.continuarBtn)
         continuarBtn.setTypeface(tf)
         continuarBtn.visibility = View.INVISIBLE

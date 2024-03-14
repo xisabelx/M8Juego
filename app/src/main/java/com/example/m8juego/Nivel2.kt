@@ -26,7 +26,6 @@ private var NOM: String =""
 private var PUNTUACIO: String=""
 private var UID: String=""
 private var NIVELL: String=""
-lateinit var tf: Typeface
 
 class Nivel2 : AppCompatActivity() {
     var soundPool: SoundPool? = null
@@ -49,7 +48,7 @@ class Nivel2 : AppCompatActivity() {
         NOM = intent?.get("NOM").toString()
         PUNTUACIO = intent?.get("PUNTUACIO").toString()
         NIVELL = intent?.get("NIVELL").toString()
-        tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
+        val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
         continuarBtn = findViewById(R.id.continuarBtn)
         continuarBtn.setTypeface(tf)
         continuarBtn.visibility = View.INVISIBLE

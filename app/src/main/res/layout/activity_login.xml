@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFEAFD"
     tools:context=".Login">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,13 +18,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/correoLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/correoLogin" />
-        <!-- forcem que la entrada sigui un correu electronic -->
+            <EditText
+                android:id="@+id/correoLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint="@string/correoLogin" />
+            <!-- forcem que la entrada sigui un correu electronic -->
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- ENTREM EL PASSWORD -->
@@ -30,14 +32,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:passwordToggleEnabled="true">
-        <EditText
-            android:id="@+id/passLogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:inputType="textPassword"
-            android:hint="@string/passLogin" />
-        <!-- forcem que la entrada sigui un password -->
+            <EditText
+                android:id="@+id/passLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:inputType="textPassword"
+                android:hint="@string/passLogin" />
+            <!-- forcem que la entrada sigui un password -->
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -46,6 +48,8 @@
             android:id="@+id/BtnLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/botopropi"
+            android:textColor="@color/white"
             android:text="@string/BtnLogin"
             android:layout_marginTop="10dp"
             />

@@ -66,5 +66,7 @@ dependencies {
     implementation ("pl.droidsonroids.gif:android-gif-drawable:1.2.23")
     implementation ("com.squareup.picasso:picasso:2.71828") //2.8
     // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation("com.google.firebase:firebase-storage")
+    implementation ("com.google.firebase:firebase-storage")
+    //fragments
+    implementation ("androidx.fragment:fragment-ktx:1.5.5")
 }

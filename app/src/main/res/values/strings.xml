@@ -1,14 +1,14 @@
 <resources>
     <string name="app_name">MazeMaster</string>
     <string name="login">Login</string>
-    <string name="registro">Registro</string>
+    <string name="registro">Registre</string>
     <string name="correo">E-mail</string>
-    <string name="nombre">Nombre</string>
-    <string name="pass">Password</string>
-    <string name="fecha">Fecha</string>
+    <string name="nombre">Nom</string>
+    <string name="pass">Contrasenya</string>
+    <string name="fecha">Data</string>
     <string name="Registrar">REGISTRAR</string>
     <string name="correoLogin">E-mail</string>
-    <string name="passLogin">Password</string>
+    <string name="passLogin">Contrasenya</string>
     <string name="BtnLogin">ENTRAR</string>
     <string name="tancarSessio">Tancar Sessió</string>
     <string name="edatEt">Edat</string>
@@ -24,9 +24,11 @@
     <string name="PuntuacionsBtn">Puntuacions</string>
     <string name="CreditsBtn">Crèdits</string>
     <string name="continuarBtn">Continuar</string>
-    <string name="movimientos">MOVIMIENTOS</string>
+    <string name="movimientos">MOVIMENTS</string>
     <string name="puntos">--</string>
     <string name="edat"> -- </string>
     <string name="poblacio"> -- </string>
     <string name="editarBtn">Canviar Imatge</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

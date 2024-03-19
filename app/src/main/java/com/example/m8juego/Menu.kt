@@ -85,6 +85,8 @@ class Menu : AppCompatActivity() {
         correo.setTypeface(tf)
         nom.setTypeface(tf)
         editarBtn.setTypeface(tf)
+        poblacio.setTypeface(tf)
+        edat.setTypeface(tf)
         //fem el mateix amb el text dels botons
         tancarSessio.setTypeface(tf)
         CreditsBtn.setTypeface(tf)
@@ -102,6 +104,8 @@ class Menu : AppCompatActivity() {
 
         CreditsBtn.setOnClickListener(){
             Toast.makeText(this,"Credits", Toast.LENGTH_SHORT).show()
+            val intent = Intent (this, Credits::class.java)
+            startActivity(intent)
         }
         PuntuacionsBtn.setOnClickListener(){
             Toast.makeText(this,"Puntuacions", Toast.LENGTH_SHORT).show()

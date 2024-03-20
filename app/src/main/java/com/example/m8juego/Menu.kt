@@ -42,6 +42,7 @@ class Menu : AppCompatActivity() {
     lateinit var PuntuacionsBtn: Button
     lateinit var jugarBtn: Button
     lateinit var editarBtn: Button
+    lateinit var passBtn: Button
     lateinit var miPuntuaciotxt: TextView
     lateinit var puntuacio: TextView
     lateinit var uid: TextView
@@ -63,6 +64,7 @@ class Menu : AppCompatActivity() {
         CreditsBtn =findViewById<Button>(R.id.CreditsBtn)
         PuntuacionsBtn =findViewById<Button>(R.id.PuntuacionsBtn)
         jugarBtn =findViewById<Button>(R.id.jugarBtn)
+        passBtn = findViewById<Button>(R.id.cambiaPass)
         val tf = Typeface.createFromAsset(assets,"fonts/Pulang.ttf")
         auth= FirebaseAuth.getInstance()
         user =auth.currentUser
@@ -125,6 +127,9 @@ class Menu : AppCompatActivity() {
             intent.putExtra("NIVELL",nivells)
             startActivity(intent)
             finish()
+        }
+        passBtn.setOnClickListener(){
+            cambiaContrasena()
         }
 
 
@@ -355,6 +360,36 @@ class Menu : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("ERROR", "Error al subir la imagen: ${e.message}", e)
             Toast.makeText(this, "Error al subir la imagen", Toast.LENGTH_SHORT).show()
+        }
+    }
+    private fun cambiaContrasena(){
+        val user = FirebaseAuth.getInstance().currentUser
+        user?.let {
+            val email = user.email
+            email?.let {
+                FirebaseAuth.getInstance().sendPasswordResetEmail(email)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            // Email de reinicio de contraseña enviado con éxito
+                            val dialog = AlertDialog.Builder(this)
+                                .setTitle("CANVIAR CONTRASEÑA")
+                                .setMessage("Se le ha enviado un correo para cambiar su contraseña")
+                                .setNegativeButton("Aceptar") { dialog, _ ->
+                                    dialog.dismiss()
+                                }
+                                .setCancelable(false)
+                                .create()
+                            dialog.show()
+                        } else {
+                            // Error al enviar el correo electrónico de reinicio de contraseña
+                            Toast.makeText(
+                                this,
+                                "Error al enviar el correo electrónico para restablecer la contraseña.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
+            }
         }
     }
 

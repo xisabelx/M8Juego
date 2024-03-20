@@ -29,4 +29,5 @@
     <string name="edat">--</string>
     <string name="poblacio">--</string>
     <string name="editarBtn">Cambiar Imagen</string>
+    <string name="cambiaPassBtn">Cambiar Contraseña</string>
 </resources>

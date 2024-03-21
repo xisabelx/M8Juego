@@ -29,21 +29,32 @@ class Credits : AppCompatActivity() {
             numeroFragment++
             if (numeroFragment>2) numeroFragment=1
             if (numeroFragment==1) {
-                supportFragmentManager.commit {
-                    replace<Centro>(R.id.fragmentcontainer)
-                    setReorderingAllowed(true)
-                    addToBackStack("replacement")
+                if (!supportFragmentManager.isStateSaved) {
+                    supportFragmentManager.commit {
+                        replace<Centro>(R.id.fragmentcontainer)
+                        setReorderingAllowed(true)
+                        addToBackStack("replacement")
+                    }
                 }
             }
             else {
-                supportFragmentManager.commit {
-                    replace<Alumnas>(R.id.fragmentcontainer)
-                    setReorderingAllowed(true)
-                    addToBackStack("replacement")
+                if (!supportFragmentManager.isStateSaved) {
+                    supportFragmentManager.commit {
+                        replace<Alumnas>(R.id.fragmentcontainer)
+                        setReorderingAllowed(true)
+                        addToBackStack("replacement")
+                    }
                 }
             }
         }
     }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.cancel()
+    }
+
 
 
 }

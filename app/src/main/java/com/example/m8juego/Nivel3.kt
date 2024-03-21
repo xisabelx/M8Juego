@@ -321,6 +321,16 @@ class Nivel3 : AppCompatActivity() {
         }
         return puntuacionFinal
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val intent = Intent(this, SeleccionNivel::class.java)
+        intent.putExtra("UID", UID)
+        intent.putExtra("NOM", NOM)
+        intent.putExtra("PUNTUACIO", PUNTUACIO)
+        intent.putExtra("NIVELL", NIVELL)
+        startActivity(intent)
+        finish()
+    }
     override fun onDestroy() {
         super.onDestroy()
         // Liberar el SoundPool cuando la actividad se destruya

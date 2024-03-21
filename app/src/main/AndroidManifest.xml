@@ -23,6 +23,9 @@
         android:theme="@style/Theme.M8Juego"
         tools:targetApi="31">
         <activity
+            android:name=".DetalleJugador"
+            android:exported="false" />
+        <activity
             android:name=".Credits"
             android:exported="false" />
         <activity
@@ -33,16 +36,20 @@
             android:exported="false" />
         <activity
             android:name=".Nivel3"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SeleccionNivel" />
         <activity
             android:name=".Nivel2"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SeleccionNivel" />
         <activity
             android:name=".Nivel1"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".SeleccionNivel" />
         <activity
             android:name=".SeleccionNivel"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".Menu" />
         <activity
             android:name=".Login"
             android:exported="false" />

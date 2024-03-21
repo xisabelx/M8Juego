@@ -1,5 +1,6 @@
 package com.example.m8juego
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -17,7 +18,6 @@ class RecyclerView : AppCompatActivity() {
     private lateinit var dbref: DatabaseReference
     private lateinit var jugadorArrayList: ArrayList<Jugador>
     private lateinit var jugadorRecyclerView: RecyclerView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +43,31 @@ class RecyclerView : AppCompatActivity() {
                         jugador?.let {
                             jugadorArrayList.add(it) // Agregar el jugador a la lista
                         }
+
                     }
+
+                    var adapter = JugadorsAdapter(jugadorArrayList)
+
                     // Ordenar la lista de jugadores por puntuación en orden descendente
                     jugadorArrayList.sortByDescending { it.Puntuacio.toIntOrNull() ?: 0 }
-                    jugadorRecyclerView.adapter = JugadorsAdapter(jugadorArrayList)
+                    jugadorRecyclerView.adapter = adapter
+                    adapter.setOnItemClickListener(object : JugadorsAdapter.OnItemClickListener{
+                        override fun onItemClick(position: Int) {
+                            Toast.makeText(this@RecyclerView, "Has clicat a .$position", Toast.LENGTH_SHORT).show()
+
+                            val intent = Intent(this@RecyclerView, DetalleJugador::class.java)
+                            intent.putExtra("Nom", jugadorArrayList[position].Nom)
+                            intent.putExtra("Puntuacio", jugadorArrayList[position].Puntuacio)
+                            intent.putExtra("Imatge", jugadorArrayList[position].Imatge)
+                            intent.putExtra("Data", jugadorArrayList[position].Data)
+                            intent.putExtra("Edat", jugadorArrayList[position].Edat)
+                            intent.putExtra("Email", jugadorArrayList[position].Email)
+                            intent.putExtra("Poblacio", jugadorArrayList[position].Poblacio)
+                            startActivity(intent) // Iniciar la actividad
+
+                        }
+
+                    })
                 }
             }
 
